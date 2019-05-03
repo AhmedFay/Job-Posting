@@ -1,0 +1,165 @@
+﻿@model IEnumerable<PostPita.Models.Post>
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_Layout4";
+}
+
+@* not used but important *@
+@*
+     @Html.DisplayFor(modelItem => item.PostingTime)
+    <span class="label label-primary"><a style="color:aliceblue">@req</a></span>
+    <p style="width: 700px;word-wrap: break-word">@Html.DisplayFor(modelItem => item.Description)</p>
+    <p>@Html.DisplayFor(modelItem => item.ContractMonths)</p>
+    <p>@Html.DisplayFor(modelItem => item.DeadLine)</p>
+    <a asp-action="Apply" asp-route-id="@item.Id">Apply</a>
+*@
+
+
+<!--model import first-->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="modelNum-@item.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold" style="text-align: left;">Job Details </h4>
+                    <h4 class="modal-title w-100 font-weight-bold" style="text-align: right;">
+                        <a href="#">
+                            open job in new windows
+                        </a>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="form-group m-form__group row" style="border-bottom: 1px solid #eee;">
+                        <h3> @Html.DisplayFor(modelItem => item.Title)  </h3>
+                    </div>
+                    <div>
+                        <span>Company: </span><span style="color: #1093c5;"> @Html.DisplayFor(modelItem => item.Company.CoName) </span>
+                        @*<ul>
+                                <li>I need Developer Web </li>
+                                <li>I need Developer Web </li>
+                                <li>I need Developer Web </li>
+                                <li>I need Developer Web </li>
+                            </ul>*@
+                    </div>
+
+                    <div style="border-bottom: 1px solid #eee;">
+                        <h3>Job description</h3>
+                        <p style="word-wrap: break-word">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+
+                    <div class="row" style="border-bottom: 1px solid #eee; padding: 3%;">
+                        <div class="col-md-3">
+                            <i class="far fa-clock"></i> <span> @Html.DisplayFor(modelItem => item.HourType)</span>
+                        </div>
+                        <div class="col-md-3">
+                            <i>$</i> <span> Salary : @Html.DisplayFor(modelItem => item.Salary)</span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="border-bottom: 1px solid #eee; padding: 3%;">
+                        <div class="col-md-2">
+                            <h3 style="margin-top: -22%">Skills</h3>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 4%;">
+                            @foreach (var req in item.RequireSkills.Split(','))
+                            {
+                                <a asp-area="" asp-controller="Search" asp-action="Index" asp-route-searchString="@req">
+                                    <button type="button" class="btn btn-link">@req</button>
+                                </a>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding: 3%;">
+                        <a asp-area="" asp-controller="Search" asp-action="Apply" asp-route-id="@item.Id">
+                            <button class="btn btn-primary" style="width: 150px; margin-bottom: 2%; margin-left: 67%; background-color: #094480 !important; color: white !important;">
+                                Apply for the job
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!--end model first-->
+
+
+
+<div class="container">
+    <div class="row searchJob">
+        <div class="offset-md-1 col-md-3">
+            <h3>Find a Job</h3>
+        </div>
+        <div class="col-md-6">
+            <form asp-action="Index" method="get">
+                <input type="search" class="form-control" placeholder="Search"
+                       style="width: 80%;display: inline-block;" name="searchString" value="@ViewBag.searchString">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class=" row containerPost">
+        <h3>Job Posts</h3>
+    </div>
+
+    <!--start posts-->
+    @foreach (var item in Model)
+    {
+        <div class="row postJob">
+            <div class=" col-md-9">
+                <div class="titleJob">
+                    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                </div>
+                <div class="dJob">
+                    <p style="word-wrap: break-word">
+                        @Html.DisplayFor(modelItem => item.Description)
+                        <a href="#" style="color: #1093c5 !important; font-weight: normal !important;"> ..more</a>
+                    </p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="far fa-clock"></i><span>@Html.DisplayFor(modelItem => item.HourType)</span>
+                        </div>
+                        <div class="col-md-2">
+                            <i>$</i> <span>@Html.DisplayFor(modelItem => item.Salary)</span>
+                        </div>
+                        <!--Skills-->
+                        <div class="col-md-7">
+                            <strong>Skills</strong>
+                            @foreach (var req in item.RequireSkills.Split(','))
+                            {
+                                <a asp-area="" asp-controller="Search" asp-action="Index" asp-route-searchString="@req">
+                                    <button type="button" class="btn btn-link">@req</button>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offset-md-1 col-md-2">
+                @*<img src="data:image/png;base64,@Html.DisplayFor(modelItem => item.Company.Logo)" style="width: 121px;height: 62px;">*@
+                <br>
+                <a asp-area="" asp-controller="Search" asp-action="Apply" asp-route-id="@item.Id">
+                    <button class="btn btn-primary" style="width: 150px;margin-bottom: 2%;">Submit a job</button>
+                </a>
+                <br>
+                <button class="btn btn-link" data-toggle="modal" data-target="#modelNum-@item.Id"
+                        style="border: 1px solid #1093c5;color: #bbb8b8; width: 150px">
+                    Details Job
+                </button>
+            </div>
+        </div>
+    }
+    <!--end posts-->
+
+</div>
+

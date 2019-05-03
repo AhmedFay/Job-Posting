@@ -1,0 +1,115 @@
+﻿@model IEnumerable<PostPita.Models.Post>
+
+@{
+    Layout = "_LayoutCom";
+    ViewData["Title"] = "Index";
+}
+
+@*<h2>@ViewBag.CompanyName</h2>*@
+
+@*
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var style = "";
+            if (item.DeadLine.CompareTo(DateTime.Now) < 0)
+            {
+                style = "#F08080";
+            }
+            <tr bgcolor="@style">
+                <td style="border-right: 1em solid @Constants.PostStateColor[(int)item.PostStatus];">
+                    @Html.DisplayFor(modelItem => item.PostStatus)
+                </td>
+                <td style="vertical-align: middle; text-align: center">
+                    @if (item.DeadLine.CompareTo(DateTime.Now) < 0)
+                    {
+                        <a asp-action="Create" asp-route-id="@item.Id">Repost | </a>
+                    }
+                    else
+                    {
+                        if (item.PostStatus == PostStatus.Approved)
+                        {
+                            <a asp-action="Hide" asp-route-id="@item.Id">Hide | </a>
+                        }
+                        else if (item.PostStatus == PostStatus.Hidden)
+                        {
+                            <a asp-action="Show" asp-route-id="@item.Id">Show | </a>
+                        }
+                        else if (item.PostStatus == PostStatus.Rejected)
+                        {
+                            <a asp-action="Review" asp-route-id="@item.Id">Review | </a>
+                        }
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>*@
+
+
+<div class="jobsManagementTable pt-5" id="v-pills-jobs-management">
+    <form class="form-inline searching col-md-8 mx-auto mb-5" action="">
+        <div class="form-group w-100">
+            <input type="search" placeholder="Search for posted jobs" class="form-control w-100">
+            <button type="submit" class="searchBtn">
+                <i class='fas fa-search'></i>
+            </button>
+        </div>
+    </form>
+    @foreach (var item in Model)
+        {
+            <div class="managementContent px-5 py-3">
+                <h4 class="managementTitle">@Html.DisplayFor(modelItem => item.Title)</h4>
+                <p class="managementDescription">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn editJob">Edit</a>
+                <button type="button" class="btn hideJob">Hide</button>
+                <button type="button" class="btn repostJob" data-toggle="modal" data-target="#repost">Repost</button>
+                <button type="button" class="btn detailsJob" data-toggle="modal" data-target="#details-post">Details</button>
+            </div>
+        }
+
+    <!-- repost modal start -->
+    <div class="modal fade" id="repost" tabindex="-1" role="dialog" aria-labelledby="repostTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="repostTitle">Repost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="deadlineToAccept">deadline to accept</label>
+                            <input type="date" name="deadlineToAccept" class="form-control" id="deadlineToAccept">
+                        </div>
+                        <input type="submit" name="save" value="save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- repost modal end -->
+    <!-- details modal start -->
+    <div class="modal fade" id="details-post" tabindex="-1" role="dialog" aria-labelledby="details-postTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="details-postTitle">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">Modal body</div>
+            </div>
+        </div>
+    </div>
+    <!-- details modal end -->
+</div>
+

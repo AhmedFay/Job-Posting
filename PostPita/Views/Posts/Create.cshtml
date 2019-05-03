@@ -1,0 +1,78 @@
+﻿@model PostPita.Models.PostVM
+
+@{
+    Layout = "_LayoutCom";
+    ViewData["Title"] = "Posting job";
+}
+
+@*<div class="form-group">
+        <label asp-for="State"></label>
+        @Html.DropDownList("State", Constants.StateList, new { @class = "form-control" })
+    </div>
+        <div class="form-group">
+        <label asp-for="ContractMonths" class="control-label"></label>
+        <input asp-for="ContractMonths" class="form-control" />
+    </div>*@
+
+<div class="tab-pane fade show active col-md-8 mx-auto" id="v-pills-posting-job" role="tabpanel"
+     aria-labelledby="v-pills-posting-job-tab">
+    <h5 class="tab-pane-head my-5">posting job</h5>
+    <form asp-action="Create" autocomplete="on">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title">job title</label>
+            <input asp-for="Title" class="form-control" placeholder="Job title">
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">job description</label>
+            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Job description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="requiredSkills">required skills</label>
+            <input class="form-control add-tag" id="requiredSkills" placeholder="Enter a skill then press comma [ , ]">
+            <div class="tags skills-values">
+                @if (Model != null && Model.RequireSkills != null)
+                {
+                    foreach (var rs in Model.RequireSkills.Split(','))
+                    {
+                        <span class="tag-span"> @rs <i class="fas fa-times"></i></span>
+                    }
+                }
+            </div>
+            <input asp-for="RequireSkills" class="tag-value" hidden>
+        </div>
+        @*<div class="form-group">
+                <label for="universitySpecialization">university specialization</label>
+                <input type="text" name="universitySpecialization" class="form-control" placeholder="University specialization">
+            </div>*@
+        @*<div class="form-group">
+                <label for="gpa">GPA</label>
+                <input type="number" name="gpa" class="form-control" id="gpa" placeholder="GPA" required>
+            </div>*@
+        <div class="form-group">
+            <label asp-for="Salary">salary</label>
+            <input asp-for="Salary" class="form-control" placeholder="Salary">
+        </div>
+        <label asp-for="HourType" class="d-block mt-4">contract type</label>
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            <input asp-for="HourType" type="radio" value="@HourType.FullTime" id="full-time" class="custom-control-input" checked>
+            <label class="custom-control-label" for="full-time">full time</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            <input asp-for="HourType" type="radio" value="@HourType.PartTime" id="part-time" class="custom-control-input">
+            <label class="custom-control-label" for="part-time">part time</label>
+        </div>
+        <div class="form-group">
+            <label asp-for="DeadLine">deadline to accept</label>
+            <input asp-for="DeadLine" class="form-control">
+        </div>
+        <input type="submit" name="postJob" class="my-4" value="post job">
+    </form>
+</div>
+
+
+@section Scripts {
+    <script>
+        $("#t1").addClass("active");
+    </script>
+}

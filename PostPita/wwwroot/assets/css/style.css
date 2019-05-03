@@ -1,0 +1,435 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+input[type="file"]{
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+label{
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+textarea{
+    resize: none;
+}
+input[type="submit"]{
+    background-color: rgb(1, 86, 143);
+    color: #ffffff;
+    text-transform: uppercase;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 20px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: Montserrat;
+    border: 2px solid rgb(1, 86, 143);
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+input[type="submit"]:hover{
+    color: #ffffff;
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+.tags span{
+    padding: 5px 10px;
+    background-color: rgb(1, 86, 143);
+    display: inline-block;
+    margin: 10px 10px 10px 0px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+.tags span i{
+    margin-left: 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.tags span i:hover{
+    opacity: 0.7;
+}
+.rating{
+    height: 46px;
+    line-height: 46px;
+}
+.rating label{
+    width: 200px;
+}
+.rate {
+    float: left;
+    height: 46px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    opacity: 0;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: rgb(1, 43, 72);    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: rgb(8, 77, 126); 
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: rgb(20, 109, 172);
+}
+
+/* navbar start */
+.headerSection{
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+.navbar{
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0,0,0,.25);
+}
+.navbar .navbar-brand{
+    font-size: 20px;
+    font-weight: bold;
+    color: #222222;
+    text-transform: uppercase;
+}
+.navbar .nav-item .nav-link{
+    margin-right: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #222222;
+    text-transform: uppercase;
+    transition-duration: 0.4s;
+}
+.navbar .nav-item .nav-link:hover{
+    color: rgb(1, 86, 143);
+    transition-duration: 0.4s;
+}
+.navbar .searching{
+    position: relative;
+    width: 190px;
+}
+.navbar .searching input{
+    width: 190px;
+    height: 30px;
+    padding-right: 16px;
+	border-radius: 0px;
+	background-color: #ffffff;
+    border: 1px solid rgb(1, 86, 143);
+}
+.navbar button.searchBtn{
+	position: absolute;
+    right: 1px;
+    top: 1px;
+	background-color: rgb(1, 86, 143);
+	color: #ffffff;
+	border: 1px solid transparent;
+    height: 28px;
+    border-radius: 0px;
+    transition-duration: 0.4s;
+}
+.navbar button.searchBtn:hover{
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+/* navbar end */
+
+/* mainSection register start */
+.mainSectionRegister h2{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: 600;
+    color: rgb(1, 86, 143);
+    margin-bottom: 50px;
+}
+.mainSectionRegister .personImage{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+#perImg {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+/* mainSection register end */
+
+/* mainSection jobs start */
+.mainSectionJobs{
+    height: 100%;
+}
+.mainSectionJobs .tabContentContainer{
+    height: 100%;
+}
+.mainSectionJobs .sideBar{
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, rgb(1, 85, 142), rgb(1, 43, 72));
+}
+.mainSectionJobs .sideBar .nav-link{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    color: #ffffff;
+    border-radius: 0px;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+.mainSectionJobs .sideBar .nav-link:last-child{
+    margin-bottom: 0px;
+}
+.mainSectionJobs .sideBar .nav-link:hover{
+    background-color: rgb(4, 47, 78);
+}
+.mainSectionJobs .sideBar .nav-link.active{
+    background-color: rgb(4, 47, 78);
+    border-left: 2px solid #ffffff;
+}
+.mainSectionJobs .searching{
+    position: relative;
+}
+.mainSectionJobs .searching input{
+    height: 44px;
+    padding-right: 55px;
+	border-radius: 0px;
+	background-color: #ffffff;
+    border: 1px solid rgb(1, 86, 143);
+}
+.mainSectionJobs button.searchBtn{
+	position: absolute;
+    right: 16px;
+    top: 1px;
+	background-color: rgb(1, 86, 143);
+	color: #ffffff;
+    border: 1px solid transparent;
+    width: 42px;
+    height: 42px;
+    border-radius: 0px;
+    transition-duration: 0.4s;
+}
+.mainSectionJobs button.searchBtn:hover{
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+.mainSectionJobs .tab-pane-head{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: rgb(1, 86, 143);
+}
+.mainSectionJobs label{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+#v-pills-jobs-management{
+    height: 100%;
+    min-height: 700px;
+    background-color: rgb(246, 246, 246);
+    overflow: hidden;
+
+}
+#v-pills-jobs-management .managementContent{
+    margin-bottom: 25px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0,0,0,.25);
+    /*overflow-wrap: break-word;*/
+    /*width: 50%;*/
+    /*overflow: hidden;*/
+}
+#v-pills-jobs-management .managementTitle{
+    font-family: Montserrat;
+    font-weight: 600;
+    color: rgb(1, 86, 143);
+    /*overflow: hidden;*/
+}
+#v-pills-jobs-management .managementDescription {
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+    /*overflow: hidden;*/
+    /*overflow-wrap: break-word;*/
+    /*word-wrap: break-word;*/
+}
+#v-pills-jobs-management .editJob,
+#v-pills-jobs-management .repostJob{
+    font-family: Montserrat;
+    background-color: rgb(0, 71, 164);
+    color: #ffffff;
+    margin-right: 10px;
+    transition-duration: 0.4s;
+}
+#v-pills-jobs-management .editJob:hover,
+#v-pills-jobs-management .repostJob:hover{
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+#v-pills-jobs-management .hideJob,
+#v-pills-jobs-management .detailsJob{
+    font-family: Montserrat;
+    background-color: #8e8c8c;
+    color: #ffffff;
+    margin-right: 10px;
+    transition-duration: 0.4s;
+}
+#v-pills-jobs-management .hideJob:hover,
+#v-pills-jobs-management .detailsJob:hover{
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+
+#v-pills-view-black-list{
+    height: 100%;
+    min-height: 700px;
+    background-color: rgb(246, 246, 246);
+}
+/* #v-pills-view-black-list table td{
+    background-color: rgb(246, 246, 246);
+    border-top: 0px;
+} */
+#v-pills-view-black-list .ratingContent{
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(246, 246, 246);
+}
+#v-pills-view-black-list .blackListImg{
+    width: 90px;
+}
+#v-pills-view-black-list .blackListImg img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(246, 246, 246);
+}
+#v-pills-view-black-list .blackListTitle{
+    font-family: Montserrat;
+    font-weight: 600;
+    color: rgb(1, 86, 143);
+}
+#v-pills-view-black-list .blackListDescription{
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+.blackListRating{
+    background-color: #ffffff;
+    height: 56px;
+    line-height: 56px;
+}
+
+#v-pills-employee-rating{
+    min-height: 700px;
+    background-color: rgb(246, 246, 246);
+}
+#v-pills-employee-rating table{
+    background-color: #ffffff;
+}
+#v-pills-employee-rating table .employeeRatingHead{
+    color: rgb(1, 86, 143);
+}
+#v-pills-employee-rating table td{
+    vertical-align: middle;
+    font-size: 14px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+#v-pills-employee-rating table .approve{
+    background-color: rgb(233, 124, 0);
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    border:  0px;
+    padding: 5px 12px;
+    transition-duration: 0.4s;
+}
+#v-pills-employee-rating table .approve:hover{
+    opacity: 0.7;
+    transition-duration: 0.4s;
+}
+
+#v-pills-applicants-for-jobs{
+    min-height: 700px;
+    background-color: rgb(246, 246, 246);
+}
+#v-pills-applicants-for-jobs table td{
+    background-color: rgb(246, 246, 246);
+    border-top: 0px;
+}
+#v-pills-applicants-for-jobs table td .tdContent{
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0,0,0,.25);    
+}
+#v-pills-applicants-for-jobs table .applicantImg{
+    width: 120px;
+}
+#v-pills-applicants-for-jobs table .applicantImg img{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(246, 246, 246);
+}
+#v-pills-applicants-for-jobs table .applicantName{
+    font-family: Montserrat;
+    font-weight: 600;
+    color: rgb(1, 86, 143);
+}
+#v-pills-applicants-for-jobs table .applicantSkill{
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+#v-pills-applicants-for-jobs table .applicantDetails{
+    background-color: rgb(1, 86, 143);
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    border:  0px;
+    height: 44px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition-duration: 0.4s;
+}
+#v-pills-applicants-for-jobs table .applicantDetails:hover{
+    opacity: 0.8;
+    transition-duration: 0.4s;
+}
+/* mainSection jobs end */
+
+/* mainSection login start */
+.mainSectionLogin .loginHead{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: rgb(1, 86, 143);
+}
+/* mainSection login end */

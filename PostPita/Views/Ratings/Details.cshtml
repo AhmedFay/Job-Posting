@@ -1,0 +1,73 @@
+﻿@model PostPita.Models.Rating
+
+@{
+    Layout = "_LayoutCom";
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rating</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.empName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.empName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.INumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.INumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Start)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.End)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.End)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fq)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fq)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aq)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aq)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pq)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pq)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cq)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cq)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

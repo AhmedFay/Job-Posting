@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PostPita.Models.CompanyUser>
+
+@{
+    ViewData["Title"] = "Companies Manage";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CoName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoName)
+                </td>
+                <td>
+                    <img src="data:image/png;base64,@(item.Logo)" width="20" height="20" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+                </td>
+                <td>
+                    <a asp-action="AcceptCo" asp-route-id="@item.Id">Accept</a> |
+                    <a asp-action="Details2" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Reject2" asp-route-id="@item.Id">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

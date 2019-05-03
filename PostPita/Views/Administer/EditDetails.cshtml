@@ -1,0 +1,66 @@
+﻿@model PostPita.Models.PostModified
+
+@{
+    ViewData["Title"] = "EditDetails";
+}
+
+<h2>EditDetails</h2>
+
+<div>
+    <h4>PostModified</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title) /
+            @Html.DisplayFor(model => model.OldPost.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd  style="width: 700px;word-wrap: break-word">
+            @Html.DisplayFor(model => model.Description) /
+            @Html.DisplayFor(model => model.OldPost.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RequireSkills)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RequireSkills) /
+            @Html.DisplayFor(model => model.OldPost.RequireSkills)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractMonths)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContractMonths) /
+            @Html.DisplayFor(model => model.OldPost.ContractMonths)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HourType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HourType) /
+            @Html.DisplayFor(model => model.OldPost.HourType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salary) /
+            @Html.DisplayFor(model => model.OldPost.Salary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeadLine) /
+            @Html.DisplayFor(model => model.OldPost.DeadLine)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="ModificationApprover">Back to List</a>
+</div>

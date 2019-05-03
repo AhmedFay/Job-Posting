@@ -1,0 +1,27 @@
+﻿<style>
+    .remove-margin {
+        width: 100%;
+        margin: 0;
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
+
+@{
+    var a = string.Equals(ViewContext.RouteData.Values["action"] as string, "Index", StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    var a1 = string.Equals(ViewContext.RouteData.Values["action"] as string, "Approver", StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    var a2 = string.Equals(ViewContext.RouteData.Values["action"] as string, "ModificationApprover", StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    var a3 = string.Equals(ViewContext.RouteData.Values["action"] as string, "CoManage", StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    var a4 = string.Equals(ViewContext.RouteData.Values["action"] as string, "SendNotification", StringComparison.OrdinalIgnoreCase) ? "active" : "";
+}
+
+<ul class="nav nav-pills nav-stacked">
+    <li class="@a"><a asp-action="Index">Home</a></li>
+    <li class="@a1"><a asp-action="Approver">Posts Manage</a></li>
+    <li class="@a2"><a asp-action="ModificationApprover">Edits Manage</a></li>
+    <li class="@a3"><a asp-action="CoManage">Company Manage</a></li>
+    <li class="@a4"><a asp-action="SendNotification">Send Notification</a></li>
+</ul>
+

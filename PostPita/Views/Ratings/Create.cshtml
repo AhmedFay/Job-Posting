@@ -1,0 +1,71 @@
+﻿@model PostPita.Models.Rating
+
+@{
+    Layout = "_LayoutCom";
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Rating</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="empName" class="control-label"></label>
+                <input asp-for="empName" class="form-control" />
+                <span asp-validation-for="empName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="INumber" class="control-label"></label>
+                <input asp-for="INumber" class="form-control" />
+                <span asp-validation-for="INumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start" class="control-label"></label>
+                <input asp-for="Start" class="form-control" type="date" />
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End" class="control-label"></label>
+                <input asp-for="End" class="form-control" type="date"/>
+                <span asp-validation-for="End" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fq" class="control-label"></label>
+                <input asp-for="Fq" class="form-control" />
+                <span asp-validation-for="Fq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aq" class="control-label"></label>
+                <input asp-for="Aq" class="form-control" />
+                <span asp-validation-for="Aq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pq" class="control-label"></label>
+                <input asp-for="Pq" class="form-control" />
+                <span asp-validation-for="Pq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cq" class="control-label"></label>
+                <input asp-for="Cq" class="form-control" />
+                <span asp-validation-for="Cq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Desc" class="control-label"></label>
+                <input asp-for="Desc" class="form-control" />
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

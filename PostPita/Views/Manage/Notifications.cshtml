@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PostPita.Models.Notification>
+
+@{
+    ViewData["Title"] = "Notifications";
+    Layout = "/Views/Shared/_Layout4.cshtml";
+}
+
+@*<style>
+    th, td {
+        text-align: center
+    }
+</style>*@
+
+<h2>Notifications</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.IsReaded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RedirectPath)
+            </th>
+            <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td style="width: 300px">
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IsReaded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RedirectPath)
+                </td>
+                <td style="width: 120px">
+                    <a asp-action="ReadNote" asp-route-id="@item.Id">Read</a> |
+                    <a asp-action="DeleteNote" asp-route-id="@item.Id">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

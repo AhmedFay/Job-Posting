@@ -1,0 +1,206 @@
+﻿
+@{
+    Layout = null;
+}
+@using Microsoft.EntityFrameworkCore
+@using PostPita.Data
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject ApplicationDbContext Context
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>@ViewData["Title"] - PostPita</title>
+    <link rel="stylesheet" type="text/css" href="~/css/searchpage.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+    <!--start_NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Company"))
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    @((await Context.Users
+                                       .Include(u => u.CompanyUser)
+                                       .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name))
+                                       .CompanyUser.CoName)
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <img src="data:image/png;base64,
+                   @((await Context.Users
+                         .Include(u => u.CompanyUser)
+                         .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name))
+                         .CompanyUser.Logo)" width="20" height="20" />
+                </a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="margin-left: 2%;">PostPita</a>
+            }
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                @if (User.IsInRole("Admin"))
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a asp-area="" asp-controller="Administer" asp-action="Index" class="nav-link">AdministerPage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Manage" asp-action="Notifications" class="nav-link">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Search" asp-action="Index" class="nav-link">Search</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Manage" asp-action="Notifications" class="nav-link">Notification</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Search" asp-action="Index" class="nav-link">Search</a>
+                        </li>
+                    </ul>
+                }
+                @if (User.IsInRole("Company"))
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="nav-link">@UserManager.GetUserName(User)!</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Ratings" asp-action="Index">Rating Manage</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Posts" asp-action="Index">Post Manage</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="BlackList" asp-action="Index">Black List</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="form-inline">
+                                <button type="submit" class="btn btn-outline-dark">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                }
+                else if (SignInManager.IsSignedIn(User))
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="nav-link">@UserManager.GetUserName(User)!</a>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="form-inline">
+                                <button type="submit" class="btn nav-item">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Account" asp-action="ComRegister" class="nav-link">Company</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Account" asp-action="EmpRegister" class="nav-link">Applicant</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Account" asp-action="Login" class="nav-link">Login</a>
+                        </li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </nav>
+    <!--end_navBar-->
+
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!--start_footer-->
+    <footer>
+        <div class="row">
+            <div class="offset-md-1 col-md-2 ">
+                <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Concat</a></li>
+                    <li><a href="">Team</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 ">
+                <ul>
+                    <li><i class="fab fa-facebook-f"></i><a href="">FaceBook</a></li>
+                    <li><i class="fab fa-twitter"></i><a href="">Twitter</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 ">
+                <ul>
+                    <li>Send Email:</li>
+                    <li>
+                        <form>
+                            <input type="Email" class="form-control" placeholder="Enter Email" style="width: 150px;display:inline-block;" name="">
+                            <input type="submit" value="ok" class="btn btn-light" style="background-color: white;color:#1093c5" name="">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 ">
+                <ul>
+                    <li>Palestine,GAZA</li>
+                    <li>2683949</li>
+                    <li>Ahmed@hotmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!--end-footer-->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

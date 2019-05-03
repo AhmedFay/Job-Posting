@@ -1,0 +1,90 @@
+﻿@model IEnumerable<PostPita.Models.PostModified>
+
+@{
+    ViewData["Title"] = "Edits Approver";
+}
+
+<style>
+    th,td {
+        text-align: center
+    }
+</style>
+<table class="table">
+    <thead>
+        <tr>
+            <td></td>
+            <td></td>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractMonths)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeadLine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th rowspan="2" style="vertical-align: middle; text-align: center">
+                    <i class="glyphicon glyphicon-star"></i>
+                </th>
+                <th>
+                    New
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractMonths)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HourType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeadLine)
+                </td>
+                <th rowspan="2" style="vertical-align: middle; text-align: center">
+                    <a asp-action="ApproveEdit" asp-route-id="@item.Id">Approve</a> |
+                    <a asp-action="EditDetails" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="RejectEdit" asp-route-id="@item.Id">Reject</a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Old
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPost.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPost.ContractMonths)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPost.HourType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPost.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPost.DeadLine)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

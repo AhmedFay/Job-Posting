@@ -1,0 +1,143 @@
+﻿@model Tuple<PostPita.Models.Post, List<PostPita.Models.Applicant>>
+
+@{
+    Layout = "_LayoutCom";
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RequireSkills)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RequireSkills)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.ContractMonths)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.ContractMonths)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.HourType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.HourType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.Salary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.Salary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.PostingTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.PostingTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.DeadLine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Item1.DeadLine)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Create" asp-route-id="@Model.Item1.Id">Repost</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<hr />
+<h3>Applicants</h3>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).IdNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).Specialization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).Skill)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item2.Find(t => t != null).isAccepted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Skill)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isAccepted)
+                </td>
+                <td>
+                    <a asp-action="setAccept" asp-route-id="@item.Id">Accept</a> |
+                    <a asp-action="addInBlackList" asp-route-id="@item.Id">BlackList</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

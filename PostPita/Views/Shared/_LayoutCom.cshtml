@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container-fluid mainSectionJobs">
+    <div class="row">
+        <!-- side bar start-->
+        <div class="sideBar col-3 px-0">
+            <div class="nav  flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="t1" asp-controller="Posts" asp-action="Create">Add a post</a>
+                <a class="nav-link" id="t2" asp-controller="Posts" asp-action="Index">manage my jobs</a>
+                <a class="nav-link" id="t3" asp-controller="Posts" asp-action="Index">manage applicants</a>
+                <a class="nav-link" id="t4" asp-controller="Ratings" asp-action="Create">rate an applicant</a>
+                <a class="nav-link" id="t5" asp-controller="Ratings" asp-action="Index">view ratings</a>
+                <a class="nav-link" id="t6" asp-controller="Posts" asp-action="Index">change password</a>
+            </div>
+        </div>
+        <!-- side bar end-->
+
+        <div class="tabContentContainer w-100 offset-3">
+            <div class="tab-content" id="v-pills-tabContent">
+                <!-- tab-content -->
+                @RenderBody()
+                <!-- tab-content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

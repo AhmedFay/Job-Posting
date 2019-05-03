@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700|Roboto:100,300,400,500,700"
+          rel="stylesheet">
+</head>
+<body>
+    <!-- header section start -->
+    <div class="container-fluid headerSection">
+        <!-- navbar start -->
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light w-100 px-5 py-3">
+                <a class="navbar-brand" href="#">pal jobs</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">feed</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">authors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">explore</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">contact</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline searching ml-lg-4 mt-3 mt-lg-0" action="">
+                        <div class="form-group">
+                            <input type="search" placeholder="Search" class="form-control">
+                            <button type="submit" class="searchBtn">
+                                <i class='fas fa-search'></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <!-- navbar end -->
+    </div>
+    <!-- header section end -->
+    <!-- mainSection -->
+    @RenderBody()
+    <!-- mainSection -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/assets/js/jquery3.3.1.js"></script>
+    <script src="~/assets/js/popper.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
