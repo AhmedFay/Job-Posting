@@ -1,71 +1,121 @@
-﻿@model PostPita.Models.Rating
+﻿@model PostPita.Models.RatingVM
 
 @{
     Layout = "_LayoutCom";
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Rating";
 }
 
-<h2>Create</h2>
+@*<input asp-for="Start" class="form-control" type="date" />
+<input asp-for="End" class="form-control" type="date" />
+<input asp-for="Desc" class="form-control" />*@
 
-<h4>Rating</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="empName" class="control-label"></label>
-                <input asp-for="empName" class="form-control" />
-                <span asp-validation-for="empName" class="text-danger"></span>
+<div class="col-md-8 mx-auto" id="v-pills-view-employee-rating">
+    <h5 class="tab-pane-head my-5">rating</h5>
+    <form asp-action="Create">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group mb-5">
+            <label for="applicantName">Select applicant</label>
+            <select id="applicantName" class="form-control" disabled>
+                <option>Ali Ahmed</option>
+                <option>Sami Mohammed</option>
+                <option>Mohammed Mahmoud</option>
+            </select>
+        </div>
+        <div class="custom-control custom-switch chBox mb-3">
+            <input type="checkbox" class="custom-control-input selectApplicant" id="selectApplicant" checked>
+            <label class="custom-control-label" for="selectApplicant">another applicant</label>
+        </div>
+        <div class="form-group">
+            <label asp-for="empName">First name</label>
+            <input asp-for="empName" class="form-control specificApplicant" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label asp-for="empName">Last name</label>
+            <input asp-for="empName" class="form-control specificApplicant" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label asp-for="INumber">ID number</label>
+            <input asp-for="INumber" class="form-control specificApplicant"
+                   placeholder="Enter ID number">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <select name="city" id="city" class="form-control specificApplicant">
+                <option>Gaza</option>
+                <option>West Bank</option>
+            </select>
+        </div>
+        <div class="rating mt-5">
+            <label class="float-left">functionality</label>
+            <div class="rate functionality">
+                <input asp-for="Fq" type="radio" id="FqStar5" value="5" />
+                <label for="FqStar5" title="5">5 stars</label>
+                <input asp-for="Fq" type="radio" id="FqStar4" value="4" />
+                <label for="FqStar4" title="4">4 stars</label>
+                <input asp-for="Fq" type="radio" id="FqStar3" value="3" />
+                <label for="FqStar3" title="3">3 stars</label>
+                <input asp-for="Fq" type="radio" id="FqStar2" value="2" />
+                <label for="FqStar2" title="2">2 stars</label>
+                <input asp-for="Fq" type="radio" id="FqStar1" value="1" />
+                <label for="FqStar1" title="1">1 star</label>
             </div>
-            <div class="form-group">
-                <label asp-for="INumber" class="control-label"></label>
-                <input asp-for="INumber" class="form-control" />
-                <span asp-validation-for="INumber" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="rating">
+            <label class="float-left">attendance</label>
+            <div class="rate attendance">
+                <input asp-for="Aq" type="radio" id="AqStar5" value="5" />
+                <label for="AqStar5" title="5">5 stars</label>
+                <input asp-for="Aq" type="radio" id="AqStar4" value="4" />
+                <label for="AqStar4" title="4">4 stars</label>
+                <input asp-for="Aq" type="radio" id="AqStar3" value="3" />
+                <label for="AqStar3" title="3">3 stars</label>
+                <input asp-for="Aq" type="radio" id="AqStar2" value="2" />
+                <label for="AqStar2" title="2">2 stars</label>
+                <input asp-for="Aq" type="radio" id="AqStar1" value="1" />
+                <label for="AqStar1" title="1">1 star</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Start" class="control-label"></label>
-                <input asp-for="Start" class="form-control" type="date" />
-                <span asp-validation-for="Start" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="rating">
+            <label class="float-left">personality</label>
+            <div class="rate personality">
+                <input asp-for="Pq" type="radio" id="PqStar5" value="5" />
+                <label for="PqStar5" title="5">5 stars</label>
+                <input asp-for="Pq" type="radio" id="PqStar4" value="4" />
+                <label for="PqStar4" title="4">4 stars</label>
+                <input asp-for="Pq" type="radio" id="PqStar3" value="3" />
+                <label for="PqStar3" title="3">3 stars</label>
+                <input asp-for="Pq" type="radio" id="PqStar2" value="2" />
+                <label for="PqStar2" title="2">2 stars</label>
+                <input asp-for="Pq" type="radio" id="PqStar1" value="1" />
+                <label for="PqStar1" title="1">1 star</label>
             </div>
-            <div class="form-group">
-                <label asp-for="End" class="control-label"></label>
-                <input asp-for="End" class="form-control" type="date"/>
-                <span asp-validation-for="End" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="rating">
+            <label class="float-left">conduct</label>
+            <div class="rate conduct">
+                <input asp-for="Cq" type="radio" id="CqStar5" value="5" />
+                <label for="CqStar5" title="5">5 stars</label>
+                <input asp-for="Cq" type="radio" id="CqStar4" value="4" />
+                <label for="CqStar4" title="4">4 stars</label>
+                <input asp-for="Cq" type="radio" id="CqStar3" value="3" />
+                <label for="CqStar3" title="3">3 stars</label>
+                <input asp-for="Cq" type="radio" id="CqStar2" value="2" />
+                <label for="CqStar2" title="2">2 stars</label>
+                <input asp-for="Cq" type="radio" id="CqStar1" value="1" />
+                <label for="CqStar1" title="1">1 star</label>
             </div>
-            <div class="form-group">
-                <label asp-for="Fq" class="control-label"></label>
-                <input asp-for="Fq" class="form-control" />
-                <span asp-validation-for="Fq" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Aq" class="control-label"></label>
-                <input asp-for="Aq" class="form-control" />
-                <span asp-validation-for="Aq" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pq" class="control-label"></label>
-                <input asp-for="Pq" class="form-control" />
-                <span asp-validation-for="Pq" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cq" class="control-label"></label>
-                <input asp-for="Cq" class="form-control" />
-                <span asp-validation-for="Cq" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Desc" class="control-label"></label>
-                <input asp-for="Desc" class="form-control" />
-                <span asp-validation-for="Desc" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+        </div>
+        <br>
+        <input type="submit" class="my-4" value="add rate">
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+@section Scripts {
+    <script>
+        $("#t4").addClass("active");
+    </script>
+}

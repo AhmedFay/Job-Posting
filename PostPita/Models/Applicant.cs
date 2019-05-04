@@ -19,7 +19,7 @@ namespace PostPita.Models
 
         public string Specialization { get; set; }
         public string Skill { get; set; }
-        public bool Gender { get; set; }
+        public Gender Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         //new 2

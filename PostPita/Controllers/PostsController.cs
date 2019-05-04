@@ -19,7 +19,7 @@ namespace PostPita.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPostRep _postRep;
 
-        public PostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,IPostRep postRep)
+        public PostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IPostRep postRep)
         {
             _context = context;
             _userManager = userManager;
@@ -29,12 +29,22 @@ namespace PostPita.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var AppUser = await _userManager.GetUserAsync(User);
-            var user = await _context.CompanyUsers.SingleOrDefaultAsync(u => u.User == AppUser);
-            ViewBag.CompanyName = user.CoName;
+            var appUser = await _userManager.GetUserAsync(User);
+            var user = await _context.CompanyUsers.SingleOrDefaultAsync(u => u.User == appUser);
+            //ViewBag.CompanyName = user.CoName;
             var posts = await _context.Posts.Where(p => p.Company == user).ToListAsync();
             posts.Reverse();
             return View(posts);
+        }
+
+        public async Task<IActionResult> AllApplicant()
+        {
+            var appUser = await _userManager.GetUserAsync(User);
+            var user = await _context.CompanyUsers.SingleOrDefaultAsync(u => u.User == appUser);
+
+            var applicants = await _postRep.GetAllApplicantAsync(user);
+            applicants.Reverse();
+            return View(applicants);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -77,7 +87,7 @@ namespace PostPita.Controllers
             {
                 var usera = await _userManager.GetUserAsync(User);
                 var user = await _context.CompanyUsers.SingleOrDefaultAsync(u => usera == u.User);
-                _context.Posts.Add(new Post(postVm, user) { PostStatus = PostStatus.Wait,PostingTime = DateTime.Now });
+                _context.Posts.Add(new Post(postVm, user) { PostStatus = PostStatus.Wait, PostingTime = DateTime.Now });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -18,6 +18,7 @@ namespace PostPita.Models
 
         Task AddApplicant(ApplicantVM vm, Post post);
         Task<List<Applicant>> GetApplicant(Post p);
+        Task<List<Applicant>> GetAllApplicantAsync(CompanyUser user);
 
         Task<List<Applicant>> GetBlackListAsync();
 

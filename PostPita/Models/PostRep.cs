@@ -63,19 +63,22 @@ namespace PostPita.Models
         {
             var ap = new Applicant(vm, post) { isAccepted = false };
 
-            var filePath = Path.GetTempFileName() + Path.GetExtension(vm.Cv.FileName);
-
-            if (vm.Cv.Length > 0)
-            {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await vm.Cv.CopyToAsync(stream);
-                    ap.CvPath = filePath;
-                }
-            }
+            //var filePath = Path.GetTempFileName() + Path.GetExtension(vm.Cv.FileName);
+            //if (vm.Cv.Length > 0)
+            //{
+            //    using (var stream = new FileStream(filePath, FileMode.Create))
+            //    {
+            //        await vm.Cv.CopyToAsync(stream);
+            //        ap.CvPath = filePath;
+            //    }
+            //}
 
             _context.Applicants.Add(ap);
             await _context.SaveChangesAsync();
+        }
+        public Task<List<Applicant>> GetAllApplicantAsync(CompanyUser user)
+        {
+            return _context.Applicants.Where(a => a.post.Company == user).ToListAsync();
         }
 
         public Task<List<Applicant>> GetBlackListAsync()

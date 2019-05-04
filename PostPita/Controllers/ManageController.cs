@@ -505,6 +505,44 @@ namespace PostPita.Controllers
             return View(ns);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Company")]
+        public IActionResult ChangePasswordCom()
+        {
+            var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Company")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePasswordCom(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                AddErrors(changePasswordResult);
+                return View(model);
+            }
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            StatusMessage = "Your password has been changed.";
+
+            return RedirectToAction(nameof(ChangePasswordCom));
+        }
+
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)

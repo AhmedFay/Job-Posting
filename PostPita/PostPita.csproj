@@ -30,4 +30,10 @@
     <Folder Include="CvFiles\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Manage\ChangePasswordCom.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PostPita.Models.Applicant>
+
+@{
+    ViewData["Title"] = "Manage Applicant";
+    Layout = "_LayoutCom";
+}
+
+<div class="pt-5" id="v-pills-employee-rating">
+    <form class="form-inline searching col-md-8 mx-auto mb-5" action="">
+        <div class="form-group w-100">
+            <input type="search" placeholder="Search for employees" class="form-control w-100">
+            <button type="submit" class="searchBtn">
+                <i class='fas fa-search'></i>
+            </button>
+        </div>
+        <div class="form-group w-100 mt-5">
+            <label for="jobTitleSelect">Job title</label>
+            <select id="jobTitleSelect" class="form-control d-inline-block col ml-4">
+                <option>All</option>
+                <option>Front-end</option>
+                <option>Back-end</option>
+            </select>
+        </div>
+    </form>
+
+    <div class="row px-5">
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col" class="employeeRatingHead">Full name</th>
+                    <th scope="col" class="employeeRatingHead">ID</th>
+                    <th scope="col" class="employeeRatingHead">GPA</th>
+                    <th scope="col" class="employeeRatingHead">Skill</th>
+                    <th scope="col" class="employeeRatingHead">Approve</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><span class="fullName">@Html.DisplayFor(modelItem => item.FullName)</span></td>
+                        <td><span class="idNumber">@Html.DisplayFor(modelItem => item.IdNumber)</span></td>
+                        <td><span class="gpa">@Html.DisplayFor(modelItem => item.Gpa)</span>%</td>
+                        <td><span class="jobTitle">@Html.DisplayFor(modelItem => item.Skill)</span></td>
+                        <td>
+                            <button type="button" name="approve" class="approve">Approve</button>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td><span class="fullName">Ali Ahmed</span></td>
+                    <td><span class="idNumber">911400781</span></td>
+                    <td><span class="gpa">90.9</span>%</td>
+                    <td><span class="jobTitle">Front-end</span></td>
+                    <td>
+                        <button type="button" name="approve" class="approve">Approve</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

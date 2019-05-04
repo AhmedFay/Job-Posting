@@ -13699,11 +13699,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TestVS\\PostPita\\PostPita\\PostPita.csproj",
+      "projectUniqueName": "D:\\GitHubRep\\Job-Posting\\PostPita\\PostPita.csproj",
       "projectName": "PostPita",
-      "projectPath": "D:\\TestVS\\PostPita\\PostPita\\PostPita.csproj",
+      "projectPath": "D:\\GitHubRep\\Job-Posting\\PostPita\\PostPita.csproj",
       "packagesPath": "C:\\Users\\JeZar\\.nuget\\packages\\",
-      "outputPath": "D:\\TestVS\\PostPita\\PostPita\\obj\\",
+      "outputPath": "D:\\GitHubRep\\Job-Posting\\PostPita\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -59,18 +59,18 @@
         </div>
     </form>
     @foreach (var item in Model)
-        {
-            <div class="managementContent px-5 py-3">
-                <h4 class="managementTitle">@Html.DisplayFor(modelItem => item.Title)</h4>
-                <p class="managementDescription">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </p>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn editJob">Edit</a>
-                <button type="button" class="btn hideJob">Hide</button>
-                <button type="button" class="btn repostJob" data-toggle="modal" data-target="#repost">Repost</button>
-                <button type="button" class="btn detailsJob" data-toggle="modal" data-target="#details-post">Details</button>
-            </div>
-        }
+    {
+        <div class="managementContent px-5 py-3">
+            <h4 class="managementTitle">@Html.DisplayFor(modelItem => item.Title)</h4>
+            <p class="managementDescription">
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn editJob">Edit</a>
+            <button type="button" class="btn hideJob">Hide</button>
+            <button type="button" class="btn repostJob" data-toggle="modal" data-target="#repost">Repost</button>
+            <button type="button" class="btn detailsJob" data-toggle="modal" data-target="#details-post">Details</button>
+        </div>
+    }
 
     <!-- repost modal start -->
     <div class="modal fade" id="repost" tabindex="-1" role="dialog" aria-labelledby="repostTitle" aria-hidden="true">
@@ -113,3 +113,8 @@
     <!-- details modal end -->
 </div>
 
+@section Scripts {
+    <script>
+        $("#t2").addClass("active");
+    </script>
+}

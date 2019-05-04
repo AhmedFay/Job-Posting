@@ -80,7 +80,7 @@ namespace PostPita.Controllers
         //[HttpPost]
         public async Task<IActionResult> Applied(int? id)
         {
-            ViewData["Msg"] = "Success applied.";
+            ViewData["Msg"] = "Success submission.";
             return View();
         }
 

@@ -13,6 +13,6 @@
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <ShowAllFiles>false</ShowAllFiles>
     <NameOfLastUsedPublishProfile>CustomProfile</NameOfLastUsedPublishProfile>
-    <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout2.cshtml</WebStackScaffolding_LayoutPageFile>
+    <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_LayoutCom.cshtml</WebStackScaffolding_LayoutPageFile>
   </PropertyGroup>
 </Project>

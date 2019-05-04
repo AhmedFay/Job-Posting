@@ -2,49 +2,11 @@
 
 @{
     Layout = "_LayoutCom";
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View Rating";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.empName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.INumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Start)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.End)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fq)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Aq)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Pq)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cq)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Desc)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+@*@foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.empName)
@@ -79,6 +41,109 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
+    }*@
+
+<div class="pt-5" id="v-pills-view-black-list">
+    <form class="form-inline searching col-md-8 mx-auto mb-4" action="">
+        <div class="form-group w-100">
+            <input type="search" placeholder="Search for blacklist employees" class="form-control w-100">
+            <button type="submit" class="searchBtn">
+                <i class='fas fa-search'></i>
+            </button>
+        </div>
+        <div class="custom-control custom-switch mt-5">
+            <input type="checkbox" class="custom-control-input" id="viewBlacklist">
+            <label class="custom-control-label" for="viewBlacklist">View Blacklist</label>
+        </div>
+    </form>
+
+    <div class="d-flex justify-content-around mt-4">
+        <div>
+            <div class="ratingContent d-flex px-3 pt-3 mx-2">
+                <div class="blackListImg">
+                    <img class="img-fluid" src="../assets/img/person-image.png" alt="company logo" title="company logo">
+                </div>
+                <div class="blackListText">
+                    <h5 class="blackListTitle">Applicant name</h5>
+                    <p class="blackListDescription mt-3 mb-2">United States</p>
+                    <p class="blackListDescription">ID : <span class="idNumber">911400781</span></p>
+                </div>
+            </div>
+            <div class="rating blackListRating px-3 mx-2">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="5">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="4">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="3">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="2">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="1">1 star</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="ratingContent d-flex px-3 pt-3 mx-2">
+                <div class="blackListImg">
+                    <img class="img-fluid" src="../assets/img/person-image.png" alt="company logo" title="company logo">
+                </div>
+                <div class="blackListText">
+                    <h5 class="blackListTitle">Applicant name</h5>
+                    <p class="blackListDescription mt-3 mb-2">United States</p>
+                    <p class="blackListDescription">ID : <span class="idNumber">911400781</span></p>
+                </div>
+            </div>
+            <div class="rating blackListRating px-3 mx-2">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="5">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="4">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="3">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="2">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="1">1 star</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="ratingContent d-flex px-3 pt-3 mx-2">
+                <div class="blackListImg">
+                    <img class="img-fluid" src="../assets/img/person-image.png" alt="company logo" title="company logo">
+                </div>
+                <div class="blackListText">
+                    <h5 class="blackListTitle">Applicant name</h5>
+                    <p class="blackListDescription mt-3 mb-2">United States</p>
+                    <p class="blackListDescription">ID : <span class="idNumber">911400781</span></p>
+                </div>
+            </div>
+            <div class="rating blackListRating px-3 mx-2">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="5">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="4">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="3">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="2">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="1">1 star</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $("#t5").addClass("active");
+    </script>
 }
-    </tbody>
-</table>
