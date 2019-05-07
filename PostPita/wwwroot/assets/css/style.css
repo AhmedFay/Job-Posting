@@ -1,4 +1,4 @@
-body{
+﻿body{
     margin: 0px;
     padding: 0px;
 }
@@ -51,46 +51,24 @@ input[type="submit"]:hover{
 .tags span i:hover{
     opacity: 0.7;
 }
-.rating{
-    height: 46px;
-    line-height: 46px;
+.mainLink{
+    display: inline-block;
+    color: rgb(1, 86, 143);
+    text-transform: uppercase;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Montserrat;
+    border: 2px solid rgb(1, 86, 143);
+    border-radius: 25px;
+    transition-duration: 0.4s;
 }
-.rating label{
-    width: 200px;
-}
-.rate {
-    float: left;
-    height: 46px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    opacity: 0;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: rgb(1, 43, 72);    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: rgb(8, 77, 126); 
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: rgb(20, 109, 172);
+.mainLink:hover{
+    text-decoration: none;
+    background-color: rgb(1, 86, 143);
+    color: #ffffff;
+    transition-duration: 0.4s;
 }
 
 /* navbar start */
@@ -150,6 +128,38 @@ input[type="submit"]:hover{
 }
 /* navbar end */
 
+/* mainSection home start */
+.mainSectionHome p{
+    font-family: Montserrat;
+}
+.mainSectionHome .staticsBar{
+    background-color: rgb(245, 245, 245);
+}
+.mainSectionHome .staticsBar span{
+    display: block;
+    color: rgb(1, 86, 143);
+    font-size: 22px;
+}
+.mainSectionHome .staticsBar .staticsNum{
+    font-weight: bold;
+}
+.mainSectionHome .peopleStories{
+    box-shadow: 0px 0px 10px rgba(0,0,0,.25);
+    width: 375px;
+}
+.mainSectionHome .peopleStories img{
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 2px;
+}
+.mainSectionHome .peopleStories p{
+    text-align: center;
+}
+.mainSectionHome .divider{
+    height: 1px;
+    background-color: rgb(226, 221, 221);;
+}
+/* mainSection home end */
+
 /* mainSection register start */
 .mainSectionRegister h2{
     text-transform: uppercase;
@@ -165,12 +175,6 @@ input[type="submit"]:hover{
     border-radius: 50%;
     margin-right: 30px;
 }
-#perImg {
-    object-fit: cover;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-}
 /* mainSection register end */
 
 /* mainSection jobs start */
@@ -180,6 +184,9 @@ input[type="submit"]:hover{
 .mainSectionJobs .tabContentContainer{
     height: 100%;
 }
+.mainSectionJobs .tabContentContainer .tab-content{
+    height: 100%;
+ }
 .mainSectionJobs .sideBar{
     height: 100%;
     position: fixed;
@@ -255,30 +262,21 @@ input[type="submit"]:hover{
     height: 100%;
     min-height: 700px;
     background-color: rgb(246, 246, 246);
-    overflow: hidden;
-
 }
 #v-pills-jobs-management .managementContent{
     margin-bottom: 25px;
     background-color: #ffffff;
     box-shadow: 0px 2px 10px rgba(0,0,0,.25);
-    /*overflow-wrap: break-word;*/
-    /*width: 50%;*/
-    /*overflow: hidden;*/
 }
 #v-pills-jobs-management .managementTitle{
     font-family: Montserrat;
     font-weight: 600;
     color: rgb(1, 86, 143);
-    /*overflow: hidden;*/
 }
-#v-pills-jobs-management .managementDescription {
+#v-pills-jobs-management .managementDescription{
     font-size: 15px;
     font-family: Roboto;
     color: #8e8c8c;
-    /*overflow: hidden;*/
-    /*overflow-wrap: break-word;*/
-    /*word-wrap: break-word;*/
 }
 #v-pills-jobs-management .editJob,
 #v-pills-jobs-management .repostJob{
@@ -312,10 +310,6 @@ input[type="submit"]:hover{
     min-height: 700px;
     background-color: rgb(246, 246, 246);
 }
-/* #v-pills-view-black-list table td{
-    background-color: rgb(246, 246, 246);
-    border-top: 0px;
-} */
 #v-pills-view-black-list .ratingContent{
     background-color: #ffffff;
     border-bottom: 1px solid rgb(246, 246, 246);
@@ -346,6 +340,7 @@ input[type="submit"]:hover{
 }
 
 #v-pills-employee-rating{
+    height: 100%;
     min-height: 700px;
     background-color: rgb(246, 246, 246);
 }
@@ -375,54 +370,6 @@ input[type="submit"]:hover{
     opacity: 0.7;
     transition-duration: 0.4s;
 }
-
-#v-pills-applicants-for-jobs{
-    min-height: 700px;
-    background-color: rgb(246, 246, 246);
-}
-#v-pills-applicants-for-jobs table td{
-    background-color: rgb(246, 246, 246);
-    border-top: 0px;
-}
-#v-pills-applicants-for-jobs table td .tdContent{
-    background-color: #ffffff;
-    box-shadow: 0px 2px 10px rgba(0,0,0,.25);    
-}
-#v-pills-applicants-for-jobs table .applicantImg{
-    width: 120px;
-}
-#v-pills-applicants-for-jobs table .applicantImg img{
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    background-color: rgb(246, 246, 246);
-}
-#v-pills-applicants-for-jobs table .applicantName{
-    font-family: Montserrat;
-    font-weight: 600;
-    color: rgb(1, 86, 143);
-}
-#v-pills-applicants-for-jobs table .applicantSkill{
-    font-size: 15px;
-    font-family: Roboto;
-    color: #8e8c8c;
-}
-#v-pills-applicants-for-jobs table .applicantDetails{
-    background-color: rgb(1, 86, 143);
-    color: #ffffff;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 500;
-    border:  0px;
-    height: 44px;
-    padding-left: 15px;
-    padding-right: 15px;
-    transition-duration: 0.4s;
-}
-#v-pills-applicants-for-jobs table .applicantDetails:hover{
-    opacity: 0.8;
-    transition-duration: 0.4s;
-}
 /* mainSection jobs end */
 
 /* mainSection login start */
@@ -433,3 +380,62 @@ input[type="submit"]:hover{
     color: rgb(1, 86, 143);
 }
 /* mainSection login end */
+
+@media (min-width: 992px){
+    .rightSection{
+        float: right !important;
+    }
+    .leftSection{
+        float: right !important;
+    }
+}
+
+/* Rating Star Style start */
+.rating{
+    height: 46px;
+    line-height: 46px;
+}
+.rating label{
+    width: 200px;
+}
+.rate {
+    float: left;
+    height: 46px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    opacity: 0;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #FFCC36;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #fbcb3f;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #FF912C;
+}
+
+#perImg {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}

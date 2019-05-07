@@ -40,13 +40,6 @@
                              .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name))
                              .CompanyUser.CoName)
                     </a>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                        <img src="data:image/png;base64,
-                             @((await Context.Users
-                                   .Include(u => u.CompanyUser)
-                                   .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name))
-                                   .CompanyUser.Logo)" width="20" height="20" />
-                    </a>
                 }
                 else
                 {
@@ -66,8 +59,6 @@
                 {
                     <ul class="nav navbar-nav">
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li><a asp-area="" asp-controller="Manage" asp-action="Notifications">Notification</a></li>

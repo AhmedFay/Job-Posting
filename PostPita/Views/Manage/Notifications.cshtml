@@ -2,62 +2,34 @@
 
 @{
     ViewData["Title"] = "Notifications";
-    Layout = "/Views/Shared/_Layout4.cshtml";
+    Layout = "_Layout2";
 }
 
-@*<style>
-    th, td {
-        text-align: center
-    }
-</style>*@
-
-<h2>Notifications</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Time)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.IsReaded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RedirectPath)
-            </th>
-            <th></th>*@
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td style="width: 300px">
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Time)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.IsReaded)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RedirectPath)
-                </td>
-                <td style="width: 120px">
-                    <a asp-action="ReadNote" asp-route-id="@item.Id">Read</a> |
-                    <a asp-action="DeleteNote" asp-route-id="@item.Id">Delete</a>
-                </td>*@
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="pt-5" id="v-pills-employee-rating">
+    <div class="row px-5 mb-4">
+        <h2 style="text-transform: uppercase;font-family: Montserrat;font-weight: bold;color: rgb(1, 86, 143);">
+            Notifications
+        </h2>
+    </div>
+    <div class="row px-5">
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col" class="employeeRatingHead">Title</th>
+                    <th scope="col" class="employeeRatingHead">Content</th>
+                    <th scope="col" class="employeeRatingHead">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><span class="fullName">@Html.DisplayFor(modelItem => item.Title)</span></td>
+                        <td><span class="idNumber">@Html.DisplayFor(modelItem => item.Content)</span></td>
+                        <td><span class="gpa">@Html.DisplayFor(modelItem => item.Time)</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

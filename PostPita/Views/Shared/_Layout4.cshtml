@@ -13,7 +13,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>@ViewData["Title"] - PostPita</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" type="text/css" href="~/css/searchpage.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -68,12 +68,12 @@
                         <li class="nav-item active">
                             <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a>
-                        </li>
+                        @* <li class="nav-item"> *@
+                        @*     <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a> *@
+                        @* </li> *@
+                        @* <li class="nav-item"> *@
+                        @*     <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a> *@
+                        @* </li> *@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
@@ -98,8 +98,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-area="" asp-controller="Ratings" asp-action="Index">Rating Manage</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Posts" asp-action="Index">Post Manage</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="" asp-controller="BlackList" asp-action="Index">Black List</a>
                             </div>
                         </li>
                         <li class="nav-item">

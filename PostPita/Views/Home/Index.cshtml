@@ -1,5 +1,86 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout2";
 }
 
-<h1>Home Page</h1>
+<!-- main section start -->
+<div class="container-fluid mainSectionHome">
+    <div class="row">
+        <div class="px-5">
+            <div class="col-12 col-lg-6 p-5 float-left">
+                <h1 class="mb-5">Get the job of your dreams through pita</h1>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+                <a asp-controller="Account" asp-action="ComRegister" class="mainLink mt-4 float-left">Post a job</a>
+                <a asp-controller="Account" asp-action="EmpRegister" class="mainLink mt-4 mr-5 float-right">Find a job</a>
+            </div>
+            <div class="col-12 col-lg-6 float-right">
+                <img class="img-fluid" src="~/assets/img/businessman.png">
+            </div>
+        </div>
+
+        <div class="px-5">
+            <div class="rightSection col-12 col-lg-6 p-5 float-left">
+                <h1 class="mb-5">Pita connects you with business owners to get a job</h1>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+                <a asp-controller="Search" class="mainLink mt-4">Browse jobs</a>
+            </div>
+            <div class="leftSection col-12 col-lg-6 float-right">
+                <img class="img-fluid" src="~/assets/img/business_deal.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="staticsBar col-12 d-flex justify-content-around py-5">
+            <div class="text-center">
+                <span class="staticsNum membersNo">89</span>
+                <span class="statics">Members</span>
+            </div>
+            <div class="text-center">
+                <span class="staticsNum jobsNo">40</span>
+                <span class="statics">Jobs</span>
+            </div>
+            <div class="text-center">
+                <span class="staticsNum companiesNo">75</span>
+                <span class="statics">Companies</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3 class="col-12 text-center my-5">Success stories for people who<br>got jobs through pita</h3>
+        <div class="d-flex flex-wrap col-12 justify-content-center">
+            <div class="peopleStories m-5 p-4">
+                <div class="col p-0 mb-4">
+                    <img class="img-fluid" src="~/assets/img/peopleStories1.png">
+                </div>
+                <h4 class="text-center mb-4">The Best Agency For Your Creative</h4>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+            </div>
+
+            <div class="peopleStories m-5 p-4">
+                <div class="col p-0 mb-4">
+                    <img class="img-fluid" src="~/assets/img/peopleStories2.png">
+                </div>
+                <h4 class="text-center mb-4">The Best Agency For Your Creative</h4>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+                <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider m-5"></div>
+
+    <div class="row px-5 mb-5">
+        <div class="col-12 col-lg-6 p-5 float-left">
+            <h1 class="mb-5">Create your personal account to get to know your companies</h1>
+            <p>Grow your business through the top freelancing website. Hire talent nearby or worldwide</p>
+            <a asp-controller="Account" asp-action="ComRegister" class="mainLink mt-4">Create account</a>
+        </div>
+        <div class="col-12 col-lg-6 float-right">
+            <img class="img-fluid" src="~/assets/img/personal-account.png">
+        </div>
+    </div>
+</div>
+<!-- main section end -->

@@ -297,7 +297,14 @@ namespace PostPita.Controllers
                     Gender = model.Gender,
                 };
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.Phone, ApplicantUser = ap, UserType = UserType.Employee };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    ApplicantUser = ap,
+                    UserType = UserType.Employee
+                };
 
                 user.Notifications.Add(new Notification()
                 {

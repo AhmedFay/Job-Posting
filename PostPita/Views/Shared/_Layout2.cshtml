@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewData["Title"]</title>
@@ -10,6 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+    @*<link rel="stylesheet" type="text/css" href="~/css/searchpage.css">*@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -22,7 +25,9 @@
         <!-- navbar start -->
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light w-100 px-5 py-3">
-                <a class="navbar-brand" href="#">pal jobs</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/img/paljobs.png">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -30,23 +35,86 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">feed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">authors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">explore</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">contact</a>
-                        </li>
-                    </ul>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Administer" asp-action="Index">Administer Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Manage" asp-action="Notifications">Notification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Search" asp-action="Index">Search Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else if (User.IsInRole("Company"))
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Posts" asp-action="Create">Manage</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Manage" asp-action="Notifications">Notification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Search" asp-action="Index">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="btn btn-link nav-link">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else if (SignInManager.IsSignedIn(User))
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Manage" asp-action="Index">Hello @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Manage" asp-action="Notifications">Notification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Search" asp-action="Index">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Search" asp-action="Index">explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="About">about</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Contact">contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Account" asp-action="ComRegister" class="nav-link">Company</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Account" asp-action="EmpRegister" class="nav-link">Applicant</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Account" asp-action="Login" class="nav-link">Login</a>
+                            </li>
+                        </ul>
+                    }
                     <form class="form-inline searching ml-lg-4 mt-3 mt-lg-0" action="">
                         <div class="form-group">
                             <input type="search" placeholder="Search" class="form-control">
