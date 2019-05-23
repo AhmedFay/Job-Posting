@@ -25,6 +25,22 @@ $(document).ready(function(){
     });
     // required skills tags end
 
+    // posted jobs modal start
+    $(".mainSectionPostedJobs .PostedJobsContent").each(function(){
+        var allDesc = $(this).find(".PostedJobsDescription").text();
+        $(this).find(".allDescription").text(allDesc);
+
+        if( $(this).find(".PostedJobsDescription").text().length > 140 ){
+            var trimmedText = $(this).find(".PostedJobsDescription").text().substr(0, 140);
+            $(this).find(".PostedJobsDescription").text(trimmedText + "....");
+        }
+    });
+
+    $(".mainSectionPostedJobs .PostedJobsDetails").click(function(){      
+        $(".mainSectionPostedJobs .modal-body .modalJobDescription").text( $(this).parents(".PostedJobsContent").find(".allDescription").text() );
+    });
+    // posted jobs modal end
+
     // select an specific applicant start
     $(".chBox").on("click", ".selectApplicant", function(){
         if( $(".specificApplicant").attr("disabled") ){

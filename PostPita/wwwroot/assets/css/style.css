@@ -156,7 +156,7 @@ input[type="submit"]:hover{
 }
 .mainSectionHome .divider{
     height: 1px;
-    background-color: rgb(226, 221, 221);;
+    background-color: rgb(226, 221, 221);
 }
 /* mainSection home end */
 
@@ -218,32 +218,36 @@ input[type="submit"]:hover{
     background-color: rgb(4, 47, 78);
     border-left: 2px solid #ffffff;
 }
-.mainSectionJobs .searching{
-    position: relative;
-}
-.mainSectionJobs .searching input{
-    height: 44px;
-    padding-right: 55px;
-	border-radius: 0px;
-	background-color: #ffffff;
-    border: 1px solid rgb(1, 86, 143);
-}
-.mainSectionJobs button.searchBtn{
-	position: absolute;
-    right: 16px;
-    top: 1px;
-	background-color: rgb(1, 86, 143);
-	color: #ffffff;
-    border: 1px solid transparent;
-    width: 42px;
-    height: 42px;
-    border-radius: 0px;
-    transition-duration: 0.4s;
-}
-.mainSectionJobs button.searchBtn:hover{
-    opacity: 0.8;
-    transition-duration: 0.4s;
-}
+    .mainSectionPostedJobs .searching,
+    .mainSectionJobs .searching {
+        position: relative;
+    }
+        .mainSectionPostedJobs .searching input,
+        .mainSectionJobs .searching input {
+            height: 44px;
+            padding-right: 55px;
+            border-radius: 0px;
+            background-color: #ffffff;
+            border: 1px solid rgb(1, 86, 143);
+        }
+    .mainSectionPostedJobs button.searchBtn,
+    .mainSectionJobs button.searchBtn {
+        position: absolute;
+        right: 16px;
+        top: 1px;
+        background-color: rgb(1, 86, 143);
+        color: #ffffff;
+        border: 1px solid transparent;
+        width: 42px;
+        height: 42px;
+        border-radius: 0px;
+        transition-duration: 0.4s;
+    }
+        .mainSectionPostedJobs button.searchBtn:hover,
+        .mainSectionJobs button.searchBtn:hover {
+            opacity: 0.8;
+            transition-duration: 0.4s;
+        }
 .mainSectionJobs .tab-pane-head{
     text-transform: uppercase;
     font-family: Montserrat;
@@ -304,7 +308,11 @@ input[type="submit"]:hover{
     opacity: 0.8;
     transition-duration: 0.4s;
 }
-
+#v-pills-jobs-management .jobStatus {
+    display: inline;
+    width: auto;
+    padding-top: 1px;
+}	
 #v-pills-view-black-list{
     height: 100%;
     min-height: 700px;
@@ -439,3 +447,148 @@ input[type="submit"]:hover{
     height: 120px;
     border-radius: 50%;
 }
+
+/* mainSection PostedJobs start */
+.mainSectionPostedJobs {
+    min-height: 700px;
+}
+
+.postedJobsHead {
+    background-color: rgb(1, 86, 143);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: Montserrat;
+}
+
+.PostedJobsContent {
+    background-color: #ffffff;
+    border: 1px solid rgb(1, 86, 143);
+    border-top: 0px;
+}
+
+.PostedJobsTitle {
+    font-family: Montserrat;
+    font-weight: 600;
+    color: rgb(1, 86, 143);
+}
+
+.PostedJobsDate {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: Roboto;
+    color: #6e6c6c;
+    margin-left: 20px;
+}
+
+.PostedJobsDescription {
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+
+.PostedJobsTime,
+.PostedJobsSalary,
+.PostedJobsSkills {
+    font-size: 13px;
+    font-family: Roboto;
+    color: #6e6c6c;
+    margin-right: 40px;
+}
+
+.PostedJobsSkills {
+    margin-right: 3px;
+}
+
+.skills {
+    font-size: 13px;
+    font-family: Roboto;
+    text-decoration: none !important;
+}
+
+    .skills::after {
+        content: " /";
+    }
+
+    .skills:last-child::after {
+        content: none;
+    }
+
+.postCompanyName {
+    width: 140px;
+    height: 60px;
+}
+
+.PostedJobsContent button,
+.modal-body button {
+    display: block;
+    margin-left: auto;
+    font-size: 14px;
+    font-family: Montserrat;
+    color: #ffffff;
+    border: 0px;
+    width: 126px;
+    height: 36px;
+    transition-duration: 0.4s;
+}
+
+    .PostedJobsContent button:hover,
+    .modal-body button:hover {
+        opacity: 0.8;
+        transition-duration: 0.4s;
+    }
+
+.PostedJobsSubmit {
+    background-color: rgb(0, 71, 164);
+    margin-bottom: 7px !important;
+}
+
+.PostedJobsDetails {
+    background-color: #8e8c8c;
+}
+
+.mainSectionPostedJobs .modal .modal-content {
+    border-radius: 0px;
+    background-color: #1f4ba5;
+}
+
+.mainSectionPostedJobs .modal .modal-header {
+    border-radius: 0px;
+    background-color: #1f4ba5;
+}
+
+.mainSectionPostedJobs .modal .modal-title {
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.mainSectionPostedJobs .modal .close {
+    color: #ffffff;
+    opacity: 1;
+}
+
+    .mainSectionPostedJobs .modal .close:hover,
+    .mainSectionPostedJobs .modal .close:focus {
+        opacity: 0.5;
+        outline: 0px;
+    }
+
+.mainSectionPostedJobs .modal .modal-body {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #ffffff;
+}
+
+.mainSectionPostedJobs .divider {
+    height: 1px;
+    background-color: rgb(226, 221, 221);
+    ;
+}
+
+.mainSectionPostedJobs .modal p {
+    font-size: 15px;
+    font-family: Roboto;
+    color: #8e8c8c;
+}
+/* mainSection PostedJobs end */

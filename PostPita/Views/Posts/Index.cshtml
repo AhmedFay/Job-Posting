@@ -17,9 +17,6 @@
                 style = "#F08080";
             }
             <tr bgcolor="@style">
-                <td style="border-right: 1em solid @Constants.PostStateColor[(int)item.PostStatus];">
-                    @Html.DisplayFor(modelItem => item.PostStatus)
-                </td>
                 <td style="vertical-align: middle; text-align: center">
                     @if (item.DeadLine.CompareTo(DateTime.Now) < 0)
                     {
@@ -69,6 +66,9 @@
             <button type="button" class="btn hideJob">Hide</button>
             <button type="button" class="btn repostJob" data-toggle="modal" data-target="#repost">Repost</button>
             <button type="button" class="btn detailsJob" data-toggle="modal" data-target="#details-post">Details</button>
+            <label class="form-control jobStatus" style="background-color: @Constants.PostStateColor[(int)item.PostStatus]">
+                Post-Status: @Html.DisplayFor(modelItem => item.PostStatus)
+            </label>
         </div>
     }
 
