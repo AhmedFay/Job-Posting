@@ -50,6 +50,10 @@ namespace PostPita.Models
         {
             return _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
         }
+        public Task<Post> GetAsyncInclude(int? id)
+        {
+            return _context.Posts.Include(m => m.Company).SingleOrDefaultAsync(m => m.Id == id);
+        }
         public async Task<List<Post>> GetUserPosts(ApplicationUser user)
         {
             return await _context.Posts.Where(p => p.Company.UserId == user.Id).ToListAsync();

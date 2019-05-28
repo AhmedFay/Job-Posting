@@ -1,0 +1,35 @@
+﻿@model PostPita.Models.Post
+
+<h5 class="PostedJobsTitle"> @Html.DisplayFor(model => model.Title) <span class="PostedJobsDate"></span></h5>
+<script>
+    $('.modal-body .PostedJobsDate').each(function () {
+        var date = @Model.PostingTime.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
+        //date = timeSince(date);
+        date = time_ago(date);
+        $(this).text('posted '+date);
+    });
+</script>
+<h6>Company: @Html.DisplayFor(model => model.Company.CoName)</h6>
+<p>
+    I need shirts design!<br>
+    I will pay for five designs $10.
+</p>
+<div class="divider my-4"></div>
+<h6>Job Description</h6>
+<p class="modalJobDescription">
+    @Html.DisplayFor(model => model.Description)
+</p>
+<div class="divider my-4"></div>
+<span class="PostedJobsTime"><i class="far fa-clock"></i> @Html.DisplayFor(model => model.HourType)</span>
+<span class="PostedJobsSalary">Salary: $@Html.DisplayFor(model => model.Salary)</span>
+<span class="PostedJobsSkills">Skills:</span>
+<div class="d-inline">
+    @foreach (var req in Model.RequireSkills.Split(','))
+    {
+        <a asp-area="" asp-controller="Search" asp-action="Index" asp-route-searchString="@req" class="skills">
+            @req
+        </a>
+    }
+</div>
+<div class="divider my-4"></div>
+<button type="button" class="PostedJobsSubmit" onclick="location.href='Search/Apply/@Model.Id';">Submit job</button>

@@ -37,6 +37,23 @@ namespace PostPita.Controllers
             return View(posts);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostModal(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var post = await _postRep.GetAsyncInclude(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("PostModal",post);
+        }
+
         public async Task<IActionResult> Apply(int? id)
         {
             if (id == null)
@@ -78,7 +95,7 @@ namespace PostPita.Controllers
         }
 
         //[HttpPost]
-        public async Task<IActionResult> Applied(int? id)
+        public IActionResult Applied(int? id)
         {
             ViewData["Msg"] = "Success submission.";
             return View();

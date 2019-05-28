@@ -17,8 +17,8 @@ D:\GitHubRep\Job-Posting\PostPita\bin\Debug\netcoreapp2.0\PostPita.dll
 D:\GitHubRep\Job-Posting\PostPita\bin\Debug\netcoreapp2.0\PostPita.pdb
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.csprojAssemblyReference.cache
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.csproj.CoreCompileInputs.cache
-D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.AssemblyInfoInputs.cache
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.AssemblyInfo.cs
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.dll
 D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\PostPita.pdb
+D:\GitHubRep\Job-Posting\PostPita\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

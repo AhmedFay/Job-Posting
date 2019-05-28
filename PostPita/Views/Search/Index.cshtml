@@ -7,12 +7,9 @@
 
 @* not used but important *@
 @*
-     @Html.DisplayFor(modelItem => item.PostingTime)
-    <span class="label label-primary"><a style="color:aliceblue">@req</a></span>
     <p style="width: 700px;word-wrap: break-word">@Html.DisplayFor(modelItem => item.Description)</p>
     <p>@Html.DisplayFor(modelItem => item.ContractMonths)</p>
     <p>@Html.DisplayFor(modelItem => item.DeadLine)</p>
-    <a asp-action="Apply" asp-route-id="@item.Id">Apply</a>
 *@
 
 
@@ -179,6 +176,7 @@
         {
             <div class="row PostedJobsContent mx-0 px-4 py-3">
                 <div class="col-8">
+                    <span class="postID" hidden>@item.Id</span>
                     <h4 class="PostedJobsTitle">@Html.DisplayFor(modelItem => item.Title) <span class="PostedJobsDate">@Html.DisplayFor(modelItem => item.PostingTime)</span></h4>
                     <p class="PostedJobsDescription">@Html.DisplayFor(modelItem => item.Description)</p>
                     <p class="allDescription d-none"></p>
@@ -191,13 +189,10 @@
                             @req
                         </a>
                     }
-                    @*<a class="skills" href="#">web</a>
-                    <a class="skills" href="#">illustration</a>
-                    <a class="skills" href="#">graphics</a>*@
                 </div>
                 <div class="col text-right">
                     <img class="postCompanyName" src="~/assets/img/company-name.png">
-                    <button type="submit" class="PostedJobsSubmit" onclick="location.href='Search/Apply/@item.Id';">Submit job</button>
+                    <button type="button" class="PostedJobsSubmit" onclick="location.href='Search/Apply/@item.Id';">Submit job</button>
                     <button type="button" class="PostedJobsDetails" data-toggle="modal" data-target="#details-postJob">Job details</button>
                 </div>
             </div>
@@ -219,12 +214,11 @@
                 <a class="skills" href="#">graphics</a>
             </div>
             <div class="col text-right">
-                <img class="postCompanyName" src="../assets/img/company-name.png">
+                <img class="postCompanyName" src="~/assets/img/company-name.png">
                 <button type="submit" class="PostedJobsSubmit">Submit job</button>
                 <button type="button" class="PostedJobsDetails" data-toggle="modal" data-target="#details-postJob">Job details</button>
             </div>
         </div>
-
 
         <!-- details modal start -->
         <div class="modal fade" id="details-postJob" tabindex="-1" role="dialog" aria-labelledby="details-postTitle" aria-hidden="true">
@@ -237,35 +231,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5 class="PostedJobsTitle">Software Developer-Java <span class="PostedJobsDate">posted 25 minutes ago</span></h5>
-                        <h6>Company: Pita</h6>
-                        <p>
-                            I need shirts design!<br>
-                            I will pay for five designs $10.
-                        </p>
-                        <div class="divider my-4"></div>
-                        <h6>Job Description</h6>
-                        <p class="modalJobDescription">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolorum provident qui, modi est, corporis ipsa veritatis quae id ex distinctio libero vitae quisquam nobis officia totam fugit repellendus minima!<br>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus odio, maiores, quae excepturi nesciunt libero suscipit perspiciatis quos reiciendis at ut sit eaque? Molestias aut quisquam amet animi atque corrupti!
-                        </p>
-                        <div class="divider my-4"></div>
-                        <span class="PostedJobsTime"><i class="far fa-clock"></i> Full-time</span>
-                        <span class="PostedJobsSalary">Salary: $500</span>
-                        <span class="PostedJobsSkills">Skills:</span>
-                        <div class="d-inline">
-                            <a class="skills" href="#">web</a>
-                            <a class="skills" href="#">illustration</a>
-                            <a class="skills" href="#">graphics</a>
-                        </div>
-                        <div class="divider my-4"></div>
-                        <button type="submit" class="PostedJobsSubmit">Submit job</button>
+                        @* call details from ajax *@
                     </div>
                 </div>
             </div>
         </div>
         <!-- details modal end -->
-
     </div>
 </div>
 <!-- mainSection PostedJobs end -->

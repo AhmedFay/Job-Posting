@@ -14,6 +14,7 @@ namespace PostPita.Models
 
         Post Get(int? id);
         Task<Post> GetAsync(int? id);
+        Task<Post> GetAsyncInclude(int? id);
         Task<List<Post>> GetUserPosts(ApplicationUser user);
 
         Task AddApplicant(ApplicantVM vm, Post post);
