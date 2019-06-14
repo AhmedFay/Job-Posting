@@ -460,6 +460,17 @@ input[type="submit"]:hover{
     font-family: Montserrat;
 }
 
+.postedJobsFooter {
+    background-color: rgb(1, 86, 143);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: Montserrat;
+}
+
+.pagination {
+    margin-bottom :0;
+}
+
 .PostedJobsContent {
     background-color: #ffffff;
     border: 1px solid rgb(1, 86, 143);

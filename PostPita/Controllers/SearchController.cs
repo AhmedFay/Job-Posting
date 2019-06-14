@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PostPita.Data;
 using PostPita.Models;
+using X.PagedList;
 
 namespace PostPita.Controllers
 {
@@ -19,7 +20,7 @@ namespace PostPita.Controllers
             _postRep = postRep;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, int? page)
         {
             ViewBag.searchString = searchString;
             List<Post> posts;
@@ -34,7 +35,11 @@ namespace PostPita.Controllers
                 posts.Reverse();
             }
 
-            return View(posts);
+            //***
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(posts.ToPagedList(pageNumber, pageSize));
+            //return View(posts);
         }
 
         [HttpPost]
@@ -51,7 +56,7 @@ namespace PostPita.Controllers
                 return NotFound();
             }
 
-            return PartialView("PostModal",post);
+            return PartialView("PostModal", post);
         }
 
         public async Task<IActionResult> Apply(int? id)

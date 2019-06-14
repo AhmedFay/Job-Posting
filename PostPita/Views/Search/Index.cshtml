@@ -1,4 +1,7 @@
-﻿@model IEnumerable<PostPita.Models.Post>
+﻿@*@model IEnumerable<PostPita.Models.Post>*@
+@model X.PagedList.IPagedList<PostPita.Models.Post>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc;
 
 @{
     ViewData["Title"] = "Search";
@@ -220,6 +223,14 @@
             </div>
         </div>
 
+        @* edit the "Index" actin to know ajax request or make another action to send just the new data *@
+        <h6 class="postedJobsFooter px-3 py-2 mb-0">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+                  new PagedListRenderOptions {
+                    LiElementClasses = new string[] { "page-item" },
+                    PageClasses = new string[] { "page-link" }
+                  })
+        </h6>
         <!-- details modal start -->
         <div class="modal fade" id="details-postJob" tabindex="-1" role="dialog" aria-labelledby="details-postTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
